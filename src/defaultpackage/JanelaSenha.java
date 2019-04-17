@@ -36,46 +36,23 @@ public class JanelaSenha implements ActionListener {
         this.janelafilacaixa.Caixa1Saida.addActionListener(this); //Funcoes de escuta, escutam quando os botoes sao clicados
         this.janelafilacaixa.Caixa2Saida.addActionListener(this);
         this.janelafilacaixa.Caixa3Saida.addActionListener(this);
+        this.janelafilacaixa.Caixa1Entrada.addActionListener(this);
+        this.janelafilacaixa.Caixa2Entrada.addActionListener(this);
+        this.janelafilacaixa.Caixa3Entrada.addActionListener(this);
+        this.janelaretirada.addNPrio.addActionListener(this);
+        this.janelaretirada.addPrio.addActionListener(this);
         this.janelafilacaixa.Chamada.addActionListener(this);
+        
     } 
     
     public void actionPerformed(ActionEvent e) //Os comandos de dentro dessa funcao so serao feitas quando for escutado o clicar de um botao
     { 
-        String cmd = new String(e.getActionCommand()); 
         
-        //Uma nova senha sera chamada quando uma caixa tiver uma saida de pessoa;
-        if ((cmd).equals("Saida1")) { 
-        	
-        	if(fila.getProximo() != null) {
-	        	numeracao.setText(Integer.toString(fila.getProximo().getSenha())); //Pega a senha da proxima pessoa
-        	}
-        	
-        }
-        else if ((cmd).equals("Saida2")) { 
-        	
-        	if(fila.getProximo() != null) {
-	        	numeracao.setText(Integer.toString(fila.getProximo().getSenha())); //Pega a senha da proxima pessoa
-        	}
-        	
-        }
-        
-        else if ((cmd).equals("Saida3")) { 
-        	
-        	if(fila.getProximo() != null) {
-	        	numeracao.setText(Integer.toString(fila.getProximo().getSenha()));
-        	}
-        	
-        }
-        
-        else if ((cmd).equals("Chamada")) { 
-        	
-        	if(fila.getProximo() != null) {
-	        	numeracao.setText(Integer.toString(fila.getProximo().getSenha()));
-        	}
-        	
-        } 
+    	if(fila.getProximo() != null) {
+        	numeracao.setText(Integer.toString(fila.getProximo().getSenha())); //Pega a senha da proxima pessoa, se qualquer escuta foi feita
+    	}
+    	
     }
-    
   //==================================================GETTERS SETTERS====================================
     
 	public JanelaRetirada getJanelaretirada() {

@@ -10,7 +10,7 @@ public class HeapSort
 
 	//Ao contrario do sort usando senha, o sort de prioridade foi deixado apenas a funcao de heapfy(fazer os prioritarios subirem a arvore)
 	//Aproveitando o fato que o heapfy eh estavel, os prioritarios que chegarem ao topo da arvore serao os com menor senha
-	//
+	//Tambem pelo fato de ser estavel, o heapfy mantera a ordem, mesmo se nao houver prioritario
 	
     public void sortPrioridade(ArrayList<Pessoa> fila) //Sort prioridade(1 passada)
     { 

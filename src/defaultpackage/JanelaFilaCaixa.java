@@ -17,8 +17,10 @@ public class JanelaFilaCaixa implements ActionListener{
     JLabel grandefila, grandesaida;
     JTextField tcaixa1, tcaixa2, tcaixa3;
     Fila fila;
-    
     int ordemprio = 0;
+    
+    //========ESSA VARIAVEL MUDANÇA MUDA A QUANTIDADE DE VEZES QUE ENTRA UM NÃO PRIORITARIO PARA DEPOIS ENTRAR UM PRIORITARIO========
+    int mudanca = 1;
     
     JanelaFilaCaixa(Fila fila, ArrayCaixas ArrayCaixa) //Criação dos atributos, janelas e botoes
     { 
@@ -123,17 +125,17 @@ public class JanelaFilaCaixa implements ActionListener{
         	if(ArrayCaixas.getArrayCaixas().get(0).isDisponivel() == true && fila.getProximo() != null) { //So faz o comando se estiver disponivel e existir um proximo
 	        	ArrayCaixas.getArrayCaixas().get(0).setDisponivel(false); //Caixa se bota como indisponivel
 	        	if(fila.getProximo().isPrioridade() == true) { //Caixa ve a prioridade da pessoa e faz a interface correta
-	        		tcaixa1.setText("[C1]O[" + fila.getProximo().getSenha() + "]");
+	        		tcaixa1.setText("[C1]" + fila.getProximo().getNome() + "[" + fila.getProximo().getSenhaprio() + "](O)");
 	        		tcaixa1.setBackground(Color.RED);
 	        	}
 	        	if(fila.getProximo().isPrioridade() == false) {
-	        		tcaixa1.setText("[C1]X[" + fila.getProximo().getSenha() + "]");
+	        		tcaixa1.setText("[C1]" + fila.getProximo().getNome() + "[" + fila.getProximo().getSenha() + "](X)");
 	        		tcaixa1.setBackground(Color.RED);
 	            	ordemprio += 1;
 	        	}
 	        	ArrayCaixas.getArrayCaixas().get(0).setPessoa(fila.getProximo()); //Pegar o proximo e colocar na caixa
-	        	fila.definirProximo(ordemprio);                                   //definir um novo proximo
-	        	if(ordemprio == 1) {          //Quando isso e 1, o proximo sera um prioritario, reseta quando o prioritario passa
+	        	fila.definirProximo(ordemprio, mudanca);                                   //definir um novo proximo
+	        	if(ordemprio == mudanca) {          //Quando isso e 1, o proximo sera um prioritario, reseta quando o prioritario passa
 	        		ordemprio = 0;
 	        	}
 	        	grandefila.setText(fila.getGrandeFila());   //Atualiza o texto da fila de entrada
@@ -162,17 +164,17 @@ public class JanelaFilaCaixa implements ActionListener{
         	if(ArrayCaixas.getArrayCaixas().get(1).isDisponivel() == true && fila.getProximo() != null) { //So faz o comando se estiver disponivel e existir um proximo
 	        	ArrayCaixas.getArrayCaixas().get(1).setDisponivel(false); //Caixa se bota como indisponivel
 	        	if(fila.getProximo().isPrioridade() == true) { //Caixa ve a prioridade da pessoa e faz a interface correta
-	        		tcaixa2.setText("[C2]O[" + fila.getProximo().getSenha() + "]");
+	        		tcaixa2.setText("[C2]" + fila.getProximo().getNome() + "[" + fila.getProximo().getSenhaprio() + "](O)");
 	        		tcaixa2.setBackground(Color.RED);
 	        	}
 	        	if(fila.getProximo().isPrioridade() == false) {
-	        		tcaixa2.setText("[C2]X[" + fila.getProximo().getSenha() + "]");
+	        		tcaixa2.setText("[C2]" + fila.getProximo().getNome() + "[" + fila.getProximo().getSenha() + "](X)");
 	        		tcaixa2.setBackground(Color.RED);
 	            	ordemprio += 1;
 	        	}
 	        	ArrayCaixas.getArrayCaixas().get(1).setPessoa(fila.getProximo()); //Pegar o primeiro da fila e colocar na caixa
-	        	fila.definirProximo(ordemprio);                                   //definir um novo proximo
-	        	if(ordemprio == 1) { //Quando isso e 1, o proximo sera um prioritario, reseta quando o prioritario passa
+	        	fila.definirProximo(ordemprio, mudanca);                                   //definir um novo proximo
+	        	if(ordemprio == mudanca) { //Quando isso e 1, o proximo sera um prioritario, reseta quando o prioritario passa
 	        		ordemprio = 0;
 	        	}
 	        	grandefila.setText(fila.getGrandeFila());    //Atualiza o texto da fila de entrada
@@ -202,17 +204,17 @@ public class JanelaFilaCaixa implements ActionListener{
         	if(ArrayCaixas.getArrayCaixas().get(2).isDisponivel() == true && fila.getProximo() != null) { //So faz o comando se estiver disponivel e existir um proximo
 	        	ArrayCaixas.getArrayCaixas().get(2).setDisponivel(false); //Caixa se bota como indisponivel
 	        	if(fila.getProximo().isPrioridade() == true) { //Caixa ve a prioridade da pessoa e faz a interface correta
-	        		tcaixa3.setText("[C3]O[" + fila.getProximo().getSenha() + "]");
+	        		tcaixa3.setText("[C3]" + fila.getProximo().getNome() + "[" + fila.getProximo().getSenhaprio() + "](O)");
 	        		tcaixa3.setBackground(Color.RED);
 	        	}
 	        	if(fila.getProximo().isPrioridade() == false) {
-	        		tcaixa3.setText("[C3]X[" + fila.getProximo().getSenha() + "]");
+	        		tcaixa3.setText("[C3]" + fila.getProximo().getNome() + "[" + fila.getProximo().getSenha() + "](X)");
 	        		tcaixa3.setBackground(Color.RED);
 	            	ordemprio += 1;
 	        	}
 	        	ArrayCaixas.getArrayCaixas().get(2).setPessoa(fila.getProximo()); //Pegar o primeiro da fila e colocar na caixa
-	        	fila.definirProximo(ordemprio);                                   //definir um novo proximo
-	        	if(ordemprio == 1) { //Quando isso e 1, o proximo sera um prioritario, reseta quando o prioritario passa
+	        	fila.definirProximo(ordemprio, mudanca);                                   //definir um novo proximo
+	        	if(ordemprio == mudanca) { //Quando isso e 1, o proximo sera um prioritario, reseta quando o prioritario passa
 	        		ordemprio = 0;
 	        	}
 	        	grandefila.setText(fila.getGrandeFila()); //Atualiza o texto da fila de entrada
@@ -238,13 +240,13 @@ public class JanelaFilaCaixa implements ActionListener{
         }
         
         else if ((cmd).equals("Senha: Prioritario")) { //Quando se clica no botao de senha prioritario
-        	fila.criarPessoa(true); 
+        	fila.criarPessoa(true, janelaretirada.inserirnome.getText()); 
             grandefila.setText(fila.getGrandeFila()); //Adicionar uma pessoa prioritaria a fila e atualizar o texto da fila
             
         } 
         
         else if ((cmd).equals("Senha: Nao Prioritario")) {  //Quando se clica no botao de senha nao prioritario
-        	fila.criarPessoa(false); 
+        	fila.criarPessoa(false, janelaretirada.inserirnome.getText()); 
         	grandefila.setText(fila.getGrandeFila()); //Adicionar uma pessoa nao prioritaria a fila e atualizar o texto da fila
         	
         }

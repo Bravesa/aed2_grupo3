@@ -50,7 +50,8 @@ public class HeapSort
     
   //==============================SORT HEAPFY Senha=============================================================
 
-    //O sort por senha esta completo, ira organizar os numeros em ordem crescente de senha 
+    //O sort por senha esta completo, ira organizar os numeros em ordem crescente de senha
+    //Todas as pessoas tem uma senha normal e uma senha prioritaria, o heap usa senha normal
 	
     public void sortSenha(ArrayList<Pessoa> fila) 
     { 
@@ -79,11 +80,11 @@ public class HeapSort
         int r = 2*i + 2; // right = 2*i + 2 
   
         // Se o filho da esqueda tiver prioridade sobre o pai
-        if (l < n && fila.get(l).getSenha() > fila.get(prioritario).getSenha()) 
+        if (l < n && fila.get(l).getOrdem() > fila.get(prioritario).getOrdem()) 
         	prioritario = l; 
   
         // Se o filho da direita tiver prioridade sobre o pai
-        if (r < n && fila.get(r).getSenha() > fila.get(prioritario).getSenha()) 
+        if (r < n && fila.get(r).getOrdem() > fila.get(prioritario).getOrdem()) 
         	prioritario = r; 
   
         // Se o pai nao for prioritario
